@@ -1,4 +1,4 @@
-namespace SharedEconomy.Web.Models
+namespace SharedEconomy.Web.ViewModels
 {
     public class ErrorViewModel
     {

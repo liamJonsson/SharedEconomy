@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using SharedEconomy.Data.Models;
+
 namespace SharedEconomy.Web
 {
     public class Program
@@ -8,6 +11,12 @@ namespace SharedEconomy.Web
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+            // 2. Registrera Contexten med strängen
+            builder.Services.AddDbContext<SharedEconomyDbContext>(options =>
+                options.UseSqlServer(connectionString));
 
             var app = builder.Build();
 
