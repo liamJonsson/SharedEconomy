@@ -14,9 +14,16 @@ namespace SharedEconomy.Web
 
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-            // 2. Registrera Contexten med strängen
             builder.Services.AddDbContext<SharedEconomyDbContext>(options =>
-                options.UseSqlServer(connectionString));
+                options.UseSqlServer(connectionString, sqlOptions =>
+                {
+                    // Detta gör att appen automatiskt försöker igen om databasen
+                    // tvekar, istället för att krascha direkt.
+                    sqlOptions.EnableRetryOnFailure(
+                        maxRetryCount: 5,
+                        maxRetryDelay: TimeSpan.FromSeconds(30),
+                        errorNumbersToAdd: null);
+                }));
 
             var app = builder.Build();
 
@@ -36,7 +43,7 @@ namespace SharedEconomy.Web
             app.MapStaticAssets();
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}")
+                pattern: "{controller=User}/{action=Login}/{id?}")
                 .WithStaticAssets();
 
             app.Run();
