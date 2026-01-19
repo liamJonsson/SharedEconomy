@@ -1,12 +1,59 @@
 body {
     background-color: #335765;
-    color: #DBE2DC;
-}
-
-.titles {
+    color: #23373F;
     font-family: 'Judson', serif;
+    font-size: 1.5rem;
+    width: 100%;
+    height: auto;
 }
 
 h1 {
-    font-size: 5rem; 
+    font-size: 5rem;
 }
+
+h1, h3 {
+    color: #DBE2DC;
+}
+
+/* Login page */
+
+.login-container {
+    width: 100%;
+}
+
+.login-title {
+    width: 50%;
+    margin-top: 6%;
+}
+
+.login-form {
+    width: 50%;
+    padding: 1% 0 1% 7%;
+}
+
+.login-subtitle {
+    margin-top: 5%;
+}
+
+.login-input {
+    width: 84%;
+    background-color: #DBE2DC;
+    border: 1px solid;
+    border-color: #23373F;
+    border-radius: 5px;
+}
+
+.login-button {
+    width: 60%;
+    background-color: #74A8A4;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+    color: #DBE2DC;
+    margin: 10% 0 0 10%;
+}
+
+
+
+
+
